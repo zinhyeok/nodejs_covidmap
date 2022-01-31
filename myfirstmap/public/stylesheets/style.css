@@ -1,8 +1,36 @@
 body {
-  padding: 50px;
+  padding: 0px !important ;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-a {
-  color: #00B7FF;
+#map {
+  width: 100%;
+  height: 100vh;
+}
+
+#navbar {
+  height: 50px;
+  width: 100%;
+  background: #262626;
+  color: white;
+  font-size: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#infobox {
+  position: absolute;
+  top: 100px;
+  z-index: 10000;
+  background-color: aliceblue;
+  left: 20px;
+  padding: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 5%;
+  text-align: center;
+}
+
+#infotitle {
+  font-weight: bolder;
 }
