@@ -34,3 +34,12 @@ body {
 #infotitle {
   font-weight: bolder;
 }
+
+.marker {
+  border: 1px solid black;
+  background-color: green;
+  opacity: 0.8;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+}
