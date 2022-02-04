@@ -29,13 +29,16 @@ var mapOptions = {
 var map = new naver.maps.Map('map', mapOptions);
 
 // marker 
-marker = new naver.maps.Marker({
-    map: map,
-    position : new naver.maps.LatLng(37.3595704, 127.105399),
-    icon: {
-        content : "<div class='marker'></div>"
-    }
-})
+for (var i in data){
+    var target = data[i];
+    var lating = new naver.maps.LatLng(target.lat, target.lng)
+    marker = new naver.maps.Marker({
+        map: map,
+        position: lating,
+        icon: {content : "<div class='marker'></div>"},
+    });
+} 
+
 </script>
 </body>
 </html>
