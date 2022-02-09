@@ -28,31 +28,54 @@ var mapOptions = {
 
 var map = new naver.maps.Map('map', mapOptions);
 var markerList = [];
-var infoWindow = [];
+var infowindowList = [];
 
 // marker 
 for (var i in data){
     var target = data[i];
-    var lating = new naver.maps.LatLng(target.lat, target.lng)
+    var latlng = new naver.maps.LatLng(target.lat, target.lng)
     marker = new naver.maps.Marker({
         map: map,
-        position: lating,
+        position: latlng,
         icon: {content : "<div class='marker'></div>",
         anchor: new naver.maps.Point(12,12) //icon 중심 좌표
     },
     });
-} 
-var content = `<div class='infowindow_wrap'></div>
-<div class='infowindow_title'>${target.title}</div>
-<div class='infowindow_content'>${target.content}</div>
-<div class='infowindow_date'>${target.date}</div>`
+    
+    var content=`<div class='infowindow_wrap'>
+        <div class='infowindow_title'>${target.title}</div>
+        <div class='infowindow_content'>${target.content}</div>
+        <div class='infowindow_date'>${target.date}</div>
+        </div>`
 
+//미리 제공된 css는 투명으로 변경 -> 차후 변경 가능하게
+//anchorsize: 말풍선 꼬리표
 var infowindow = new naver.maps.InfoWindow({
     content: content,
     backgroundColor: "#00ff0000",
     borderColor: "#00ff0000",
     anchorSize: new naver.maps.Size(0,0)
 });
+    markerList.push(marker);
+    infowindowList.push(infowindow);
+}
+
+for (var i=0, ii=markerList.length; i<ii; i++){
+    naver.maps.Event.addListener(markerList[i], "click", getClickHandler(i));
+}
+//marker click시 정보 표시
+function getClickHandler(i){
+    return function(){
+        var marker = markerList[i];
+        var infowindow = infowindowList[i];
+        if(infowindow.getMap()){
+            infowindow.close();
+        }
+        else{
+            infowindow.open(map,marker);
+        }
+    }
+}
 </script>
 </body>
 </html>

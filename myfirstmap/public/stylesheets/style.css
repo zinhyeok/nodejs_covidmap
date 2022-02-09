@@ -43,3 +43,19 @@ body {
   height: 24px;
   border-radius: 50%;
 }
+
+.infowindow_wrap {
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 20px;
+}
+
+.infowindow_title {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.infowidow_content {
+  font-size: 12px;
+  font-weight: normal;
+}
