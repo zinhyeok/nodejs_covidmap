@@ -62,6 +62,13 @@ var infowindow = new naver.maps.InfoWindow({
 
 for (var i=0, ii=markerList.length; i<ii; i++){
     naver.maps.Event.addListener(markerList[i], "click", getClickHandler(i));
+    naver.maps.Event.addListener(map, "click", ClickMap(i))
+}
+function ClickMap(i){
+    return function(){
+        var infowindow = infowindowList[i];
+        infowindow.close()
+    }
 }
 //marker click시 정보 표시
 function getClickHandler(i){
